@@ -1,0 +1,52 @@
+public class Book {
+    private String title;
+    private String author;
+    double price;
+
+    public Book(String title, String author, double price){
+        this.title = title;
+        this.author = author;
+        this.price = price;
+    }
+    public void displayInfo(){
+        System.out.println("Title: " + title + "\nAuthor: " + author + "\nPrice: " + price);
+    }
+}
+
+
+public class Customer {
+    String name;
+    double balance;
+
+    public Customer(String name, double balance){
+        this.name = name;
+        this.balance = balance;
+
+    }
+    public void buyBook (Book book){
+        if (balance > book.price){
+            balance -= book.price;
+            System.out.println(name + " bought this book.");
+            System.out.println("Remaining balance:" + balance);
+        }else{
+            System.out.println(name + " could not afford this book");
+        }
+    }
+}
+
+
+
+public class Main {
+    public static void main(String[] args) {
+        Book catHat = new Book("Cat in the Hat", "Dr.Suess", 5.00);
+        Customer Julie = new Customer("Julie", 1.00);
+        Customer Trinity = new Customer("Trinity", 50.00);
+        catHat.displayInfo();
+        Julie.buyBook(catHat);
+
+        System.out.println("\n");
+
+        catHat.displayInfo();
+        Trinity.buyBook(catHat);
+    }
+}
